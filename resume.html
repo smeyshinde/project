@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Building Dendrogram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        select:focus {
+            border-color: #74ebd5;
+            box-shadow: 0 0 8px rgba(116, 235, 213, 0.6);
+        }
+        .dendrogram {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dendrogram div {
+            text-align: center;
+            margin: 0 15px;
+        }
+        .line {
+            height: 30px;
+            width: 2px;
+            background: #000;
+            margin: 0 auto;
+        }
+        .section-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Build Your Resume</h1>
+    
+    <label for="resume-section-select">Select a resume section:</label>
+    <select id="resume-section-select">
+        <option value="">-- Choose a section --</option>
+        <option value="summary">Summary</option>
+        <option value="experience">Work Experience</option>
+        <option value="education">Education</option>
+        <option value="skills">Skills</option>
+        <option value="projects">Projects</option>
+    </select>
+    
+    <div id="section-info"></div>
+</div>
+
+<script>
+    document.getElementById('resume-section-select').addEventListener('change', function() {
+        var selectedSection = this.value;
+        var sectionInfo = document.getElementById('section-info');
+        
+        // Clear previous content
+        sectionInfo.innerHTML = '';
+        
+        // Depending on the selected section, display relevant information and dendrogram
+        switch (selectedSection) {
+            case 'summary':
+                sectionInfo.innerHTML = `
+                    <h2>Summary</h2>
+                    <p>A brief overview of your professional qualifications and career goals. This section should highlight your strengths and what you bring to the table.</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Relevant Experience</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Key Skills</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Career Objectives</h4></div>
+                    </div>
+                `;
+                break;
+            case 'experience':
+                sectionInfo.innerHTML = `
+                    <h2>Work Experience</h2>
+                    <p>Details of your past jobs, including roles, responsibilities, and achievements. Use bullet points for clarity and to emphasize your contributions.</p>
+                    <div class="dendrogram">
+                        <div><h4>Job Title</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Company Name</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Duration</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Key Responsibilities</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Achievements</h4></div>
+                    </div>
+                `;
+                break;
+            case 'education':
+                sectionInfo.innerHTML = `
+                    <h2>Education</h2>
+                    <p>Your academic background, including degrees and certifications. Mention relevant courses or projects that apply to the job you're seeking.</p>
+                    <div class="dendrogram">
+                        <div><h4>Degree</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Institution</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Year of Graduation</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Relevant Coursework</h4></div>
+                    </div>
+                `;
+                break;
+            case 'skills':
+                sectionInfo.innerHTML = `
+                    <h2>Skills</h2>
+                    <p>A list of your relevant skills and proficiencies. Categorize them into technical and soft skills for better readability.</p>
+                    <div class="dendrogram">
+                        <div><h4>Technical Skills</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Soft Skills</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Languages</h4></div>
+                    </div>
+                `;
+                break;
+            case 'projects':
+                sectionInfo.innerHTML = `
+                    <h2>Projects</h2>
+                    <p>Highlights of significant projects you have worked on. Include a brief description, your role, and technologies used.</p>
+                    <div class="dendrogram">
+                        <div><h4>Project Title</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Description</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Technologies Used</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Key Takeaways</h4></div>
+                    </div>
+                `;
+                break;
+            default:
+                sectionInfo.innerHTML = '<p>Please select a resume section to see more information.</p>';
+        }
+    });
+</script>
+
+</body>
+</html>

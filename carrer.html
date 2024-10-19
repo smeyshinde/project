@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Dendrogram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5); /* Gradient background */
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white; /* White background for the container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(5px); /* Apply blur effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow */
+        }
+        select:focus {
+            border-color: #74ebd5; /* Focus border color */
+            box-shadow: 0 0 8px rgba(116, 235, 213, 0.6); /* Focus box shadow */
+        }
+        .dendrogram {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dendrogram div {
+            text-align: center;
+            margin: 0 15px;
+        }
+        .line {
+            height: 30px;
+            width: 2px;
+            background: #000;
+            margin: 0 auto;
+        }
+        .career-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Explore Careers</h1>
+    
+    <label for="career-select">Select a career:</label>
+    <select id="career-select">
+        <option value="">-- Choose a career --</option>
+        <option value="software-engineer">Software Engineer</option>
+        <option value="doctor">Doctor</option>
+        <option value="teacher">Teacher</option>
+        <option value="graphic-designer">Graphic Designer</option>
+        <option value="mechanical-engineer">Mechanical Engineer</option>
+    </select>
+    
+    <div id="career-info"></div>
+</div>
+
+<script>
+    document.getElementById('career-select').addEventListener('change', function() {
+        var selectedCareer = this.value;
+        var careerInfo = document.getElementById('career-info');
+        
+        // Clear previous content
+        careerInfo.innerHTML = '';
+        
+        // Depending on the selected career, display relevant information and dendrogram
+        switch (selectedCareer) {
+            case 'software-engineer':
+                careerInfo.innerHTML = `
+                    <h2>Software Engineer</h2>
+                    <p>Software engineers design, develop, and maintain software applications.</p>
+                    <p><strong>Skills:</strong> Programming, problem-solving, teamwork</p>
+                    <p><strong>Education:</strong> Bachelor's in Computer Science</p>
+                    <p class="career-details"><strong>Job Outlook:</strong> 22% growth from 2020 to 2030 (much faster than average)</p>
+                    <p class="career-details"><strong>Average Salary:</strong> $112,620 per year</p>
+                    <p class="career-details"><strong>Potential Career Paths:</strong> Senior Software Engineer, Technical Lead, Software Architect</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Bachelor's Degree</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Internship</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Entry-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Mid-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Senior-Level Position</h4></div>
+                    </div>
+                `;
+                break;
+            case 'doctor':
+                careerInfo.innerHTML = `
+                    <h2>Doctor</h2>
+                    <p>Diagnose and treat medical conditions.</p>
+                    <p><strong>Skills:</strong> Medical knowledge, empathy, communication</p>
+                    <p><strong>Education:</strong> Medical degree and residency</p>
+                    <p class="career-details"><strong>Job Outlook:</strong> 3% growth from 2020 to 2030 (about average)</p>
+                    <p class="career-details"><strong>Average Salary:</strong> $208,000 per year</p>
+                    <p class="career-details"><strong>Potential Career Paths:</strong> Specialist, Medical Director, Researcher</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Bachelor's Degree (Pre-Med)</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Medical School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Residency</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Fellowship (Optional)</h4></div>
+                    </div>
+                `;
+                break;
+            case 'teacher':
+                careerInfo.innerHTML = `
+                    <h2>Teacher</h2>
+                    <p>Educate students in various subjects.</p>
+                    <p><strong>Skills:</strong> Teaching skills, patience, subject knowledge</p>
+                    <p><strong>Education:</strong> Bachelor's in Education</p>
+                    <p class="career-details"><strong>Job Outlook:</strong> 4% growth from 2020 to 2030 (about average)</p>
+                    <p class="career-details"><strong>Average Salary:</strong> $62,870 per year</p>
+                    <p class="career-details"><strong>Potential Career Paths:</strong> Principal, Curriculum Developer, Educational Consultant</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Bachelor's Degree</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Teacher Certification</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Entry-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Mid-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Senior Position</h4></div>
+                    </div>
+                `;
+                break;
+            case 'graphic-designer':
+                careerInfo.innerHTML = `
+                    <h2>Graphic Designer</h2>
+                    <p>Create visual concepts using design software.</p>
+                    <p><strong>Skills:</strong> Creativity, design software proficiency</p>
+                    <p><strong>Education:</strong> Bachelor's in Graphic Design</p>
+                    <p class="career-details"><strong>Job Outlook:</strong> 3% growth from 2020 to 2030 (about average)</p>
+                    <p class="career-details"><strong>Average Salary:</strong> $53,380 per year</p>
+                    <p class="career-details"><strong>Potential Career Paths:</strong> Senior Designer, Art Director, UX/UI Designer</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Bachelor's Degree</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Portfolio Development</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Internship</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Entry-Level Position</h4></div>
+                    </div>
+                `;
+                break;
+            case 'mechanical-engineer':
+                careerInfo.innerHTML = `
+                    <h2>Mechanical Engineer</h2>
+                    <p>Design and develop mechanical systems and devices.</p>
+                    <p><strong>Skills:</strong> Analytical skills, problem-solving</p>
+                    <p><strong>Education:</strong> Bachelor's in Mechanical Engineering</p>
+                    <p class="career-details"><strong>Job Outlook:</strong> 7% growth from 2020 to 2030 (about average)</p>
+                    <p class="career-details"><strong>Average Salary:</strong> $90,160 per year</p>
+                    <p class="career-details"><strong>Potential Career Paths:</strong> Senior Engineer, Project Manager, Research and Development Engineer</p>
+                    <div class="dendrogram">
+                        <div><h4>High School</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Bachelor's Degree</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Internship</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Entry-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Mid-Level Position</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Senior Position</h4></div>
+                    </div>
+                `;
+                break;
+            default:
+                careerInfo.innerHTML = '<p>Please select a career to see more information.</p>';
+        }
+    });
+</script>
+
+</body>
+</html>

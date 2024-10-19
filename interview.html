@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation Dendrogram</title>
+    <style>  
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #a8c0ff, #3f2b96); /* Gradient background */
+            color: #333;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Box shadow for the select element */
+        }
+        .dendrogram {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dendrogram div {
+            text-align: center;
+            margin: 0 15px;
+        }
+        .line {
+            height: 30px;
+            width: 2px;
+            background: #000;
+            margin: 0 auto;
+        }
+        .section-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Interview Preparation</h1>
+    
+    <label for="interview-section-select">Select a preparation area:</label>
+    <select id="interview-section-select">
+        <option value="">-- Choose an area --</option>
+        <option value="research">Research the Company</option>
+        <option value="resume">Review Your Resume</option>
+        <option value="practice">Practice Common Questions</option>
+        <option value="questions">Prepare Your Questions</option>
+        <option value="attire">Choose Appropriate Attire</option>
+    </select>
+    
+    <div id="section-info"></div>
+</div>
+
+<script>
+    document.getElementById('interview-section-select').addEventListener('change', function() {
+        var selectedSection = this.value;
+        var sectionInfo = document.getElementById('section-info');
+        
+        // Clear previous content
+        sectionInfo.innerHTML = '';
+        
+        // Depending on the selected section, display relevant information and dendrogram
+        switch (selectedSection) {
+            case 'research':
+                sectionInfo.innerHTML = `
+                    <h2>Research the Company</h2>
+                    <p>Understanding the company's mission, values, culture, and recent news can give you a significant edge in the interview.</p>
+                    <ul>
+                        <li>Visit the company's website and read their "About Us" page.</li>
+                        <li>Check out their social media profiles for recent updates.</li>
+                        <li>Look for reviews on Glassdoor to understand employee perspectives.</li>
+                    </ul>
+                    <div class="dendrogram">
+                        <div><h4>Company Mission</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Recent News</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Company Culture</h4></div>
+                    </div>
+                `;
+                break;
+            case 'resume':
+                sectionInfo.innerHTML = `
+                    <h2>Review Your Resume</h2>
+                    <p>Be ready to discuss your experiences in detail. Tailor your resume to highlight relevant achievements.</p>
+                    <ul>
+                        <li>Know your key achievements and be prepared to quantify them.</li>
+                        <li>Be ready to explain any gaps in your employment.</li>
+                        <li>Practice summarizing your experiences concisely.</li>
+                    </ul>
+                    <div class="dendrogram">
+                        <div><h4>Key Achievements</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Relevant Experiences</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Projects</h4></div>
+                    </div>
+                `;
+                break;
+            case 'practice':
+                sectionInfo.innerHTML = `
+                    <h2>Practice Common Questions</h2>
+                    <p>Prepare for typical interview questions to build confidence and fluency in your responses.</p>
+                    <ul>
+                        <li>Common Questions: "Tell me about yourself," "What are your strengths and weaknesses?"</li>
+                        <li>Behavioral Questions: Use the STAR method (Situation, Task, Action, Result) to structure your answers.</li>
+                        <li>Mock Interviews: Practice with a friend or mentor to simulate the interview environment.</li>
+                    </ul>
+                    <div class="dendrogram">
+                        <div><h4>Strengths</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Weaknesses</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Behavioral Questions</h4></div>
+                    </div>
+                `;
+                break;
+            case 'questions':
+                sectionInfo.innerHTML = `
+                    <h2>Prepare Your Questions</h2>
+                    <p>Having questions ready shows your interest in the role and helps you assess if the company is a good fit.</p>
+                    <ul>
+                        <li>Inquire about the day-to-day responsibilities of the role.</li>
+                        <li>Ask about the team's dynamics and company culture.</li>
+                        <li>Questions about career progression opportunities can also be insightful.</li>
+                    </ul>
+                    <div class="dendrogram">
+                        <div><h4>Role Expectations</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Company Culture</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Career Development</h4></div>
+                    </div>
+                `;
+                break;
+            case 'attire':
+                sectionInfo.innerHTML = `
+                    <h2>Choose Appropriate Attire</h2>
+                    <p>Dress appropriately for the company culture, as first impressions matter significantly.</p>
+                    <ul>
+                        <li>Business Formal: Suits, ties, and formal dresses for corporate settings.</li>
+                        <li>Business Casual: Dress slacks, collared shirts, and blouses for a relaxed but professional look.</li>
+                        <li>Casual: Jeans and polo shirts for creative or tech companies, but ensure they are neat and clean.</li>
+                    </ul>
+                    <div class="dendrogram">
+                        <div><h4>Business Formal</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Business Casual</h4></div>
+                        <div class="line"></div>
+                        <div><h4>Casual</h4></div>
+                    </div>
+                `;
+                break;
+            default:
+                sectionInfo.innerHTML = '<p>Please select a preparation area to see more information.</p>';
+        }
+    });
+</script>
+
+</body>
+</html>
